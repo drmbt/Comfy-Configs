@@ -1,0 +1,68 @@
+{
+  "362": {
+    "inputs": {
+      "interpolation": "LANCZOS",
+      "crop_position": "top",
+      "sharpening": 0,
+      "image": [
+        "375",
+        0
+      ]
+    },
+    "class_type": "PrepImageForClipVision",
+    "_meta": {
+      "title": "Prepare Image For Clip Vision"
+    }
+  },
+  "364": {
+    "inputs": {
+      "mode": "fast",
+      "image": [
+        "362",
+        0
+      ]
+    },
+    "class_type": "CLIP_Interrogator",
+    "_meta": {
+      "title": "CLIP_Interrogator"
+    }
+  },
+  "375": {
+    "inputs": {
+      "ndi_name": "NCASE-DRMBT (TD2COMFY)"
+    },
+    "class_type": "NDI_LoadImage",
+    "_meta": {
+      "title": "NDI Receive Image"
+    }
+  },
+  "388": {
+    "inputs": {
+      "text": [
+        "364",
+        0
+      ]
+    },
+    "class_type": "ShowText|pysssss",
+    "_meta": {
+      "title": "Show Text 🐍"
+    }
+  },
+  "390": {
+    "inputs": {
+      "text": [
+        "364",
+        0
+      ],
+      "path": "./ComfyUI/output/interrogate/",
+      "filename_prefix": "interrogate_results",
+      "filename_delimiter": "_",
+      "filename_number_padding": 4,
+      "overwrite_mode": "prefix_as_filename"
+    },
+    "class_type": "Save Text File_mne",
+    "_meta": {
+      "title": "Save Text File_mne"
+    }
+  }
+}

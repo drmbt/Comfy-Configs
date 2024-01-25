@@ -1,0 +1,240 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "cardosAnime_v20.safetensors",
+      "beta_schedule": "sqrt_linear (AnimateDiff)"
+    },
+    "class_type": "CheckpointLoaderSimpleWithNoiseSelect"
+  },
+  "2": {
+    "inputs": {
+      "vae_name": "vae-ft-mse-840000-ema-pruned.safetensors"
+    },
+    "class_type": "VAELoader"
+  },
+  "3": {
+    "inputs": {
+      "text": "An amazing zydink ink sketch, japanese ink wash painting",
+      "clip": [
+        "67",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "4": {
+    "inputs": {
+      "stop_at_clip_layer": -2,
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPSetLastLayer"
+  },
+  "6": {
+    "inputs": {
+      "text": "nsfw. (worst quality, low quality: 1.4), young, camera, lens, blurry. lowpoly, lowres. shutterstock watermark, lol. flicker. extra limbs. no, really, the shutterstock logo needs to go, mate. minimalism.",
+      "clip": [
+        "67",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "seed": 360234585279452,
+      "steps": 20,
+      "cfg": 7.75,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "42",
+        0
+      ],
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "latent_image": [
+        "65",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "10": {
+    "inputs": {
+      "samples": [
+        "7",
+        0
+      ],
+      "vae": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "12": {
+    "inputs": {
+      "filename_prefix": "AA_readme",
+      "images": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
+  },
+  "27": {
+    "inputs": {
+      "frame_rate": 12,
+      "loop_count": 0,
+      "filename_prefix": "Enabled",
+      "format": "video/h264-mp4",
+      "pingpong": false,
+      "save_image": true,
+      "ad_gif_preview__0": "/view?filename=Enabled_00004_.mp4&subfolder=&type=output&format=video%2Fh264-mp4",
+      "images": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "ADE_AnimateDiffCombine"
+  },
+  "34": {
+    "inputs": {
+      "model_name": "mm_sd_v15_v2.ckpt",
+      "beta_schedule": "sqrt_linear (AnimateDiff)",
+      "model": [
+        "68",
+        0
+      ],
+      "context_options": [
+        "35",
+        0
+      ],
+      "motion_lora": [
+        "61",
+        0
+      ]
+    },
+    "class_type": "ADE_AnimateDiffLoaderWithContext"
+  },
+  "35": {
+    "inputs": {
+      "context_length": 16,
+      "context_stride": 1,
+      "context_overlap": 4,
+      "context_schedule": "uniform",
+      "closed_loop": true
+    },
+    "class_type": "ADE_AnimateDiffUniformContextOptions"
+  },
+  "42": {
+    "inputs": {
+      "b1": 1,
+      "b2": 0.9,
+      "s1": 0.9,
+      "s2": 0.2,
+      "model": [
+        "67",
+        0
+      ]
+    },
+    "class_type": "FreeU"
+  },
+  "61": {
+    "inputs": {
+      "lora_name": "v2_lora_ZoomIn.ckpt",
+      "strength": 0.9500000000000001
+    },
+    "class_type": "ADE_AnimateDiffLoRALoader"
+  },
+  "65": {
+    "inputs": {
+      "width": 1024,
+      "height": 576,
+      "batch_size": 16
+    },
+    "class_type": "ADE_EmptyLatentImageLarge"
+  },
+  "67": {
+    "inputs": {
+      "switch": "On",
+      "lora_name": "zyd232_InkStyle_v1_0.safetensors",
+      "strength_model": 0.6,
+      "strength_clip": 1,
+      "model": [
+        "34",
+        0
+      ],
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CR Load LoRA"
+  },
+  "68": {
+    "inputs": {
+      "weight": 0.5,
+      "noise": 0.5,
+      "ipadapter": [
+        "69",
+        0
+      ],
+      "clip_vision": [
+        "70",
+        0
+      ],
+      "image": [
+        "72",
+        0
+      ],
+      "model": [
+        "1",
+        0
+      ]
+    },
+    "class_type": "IPAdapterApply"
+  },
+  "69": {
+    "inputs": {
+      "ipadapter_file": "ip-adapter-plus_sd15.bin"
+    },
+    "class_type": "IPAdapterModelLoader"
+  },
+  "70": {
+    "inputs": {
+      "clip_name": "SD1.5\\model.safetensors"
+    },
+    "class_type": "CLIPVisionLoader"
+  },
+  "71": {
+    "inputs": {
+      "image": "00006-3785881569.png",
+      "choose file to upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "72": {
+    "inputs": {
+      "interpolation": "bicubic",
+      "crop_position": "center",
+      "sharpening": 0,
+      "add_weight": false,
+      "image": [
+        "71",
+        0
+      ]
+    },
+    "class_type": "PrepImageForClipVision"
+  }
+}
